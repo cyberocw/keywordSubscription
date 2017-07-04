@@ -30,7 +30,7 @@ public class PortalInfoServiceImpl {
 	private String siteName;
 	private int sitePoint;
 	
-	@Scheduled(cron = "0 0/10 * * * *")
+	@Scheduled(cron = "0 0/30 * * * *")
 	public void collectInsert() {
 		System.out.println("collect insert start");
 		KeywordBaseAbs nk = KeywordNaver.getInstance();
@@ -53,8 +53,6 @@ public class PortalInfoServiceImpl {
 		//List<Keyword> todayList = keywordDao.findBySimpleDateGreaterThanEqual(today);
 		
 		List todayList = keywordDao.findBySimpleDateGroupGreaterThanEqual(Codes.KEYWORD_TYPE.BASE, today);
-		
-		System.out.println("todayList.size()="+todayList.size());
 		
 		
 		ArrayList<Keyword> arr = new ArrayList<Keyword>();

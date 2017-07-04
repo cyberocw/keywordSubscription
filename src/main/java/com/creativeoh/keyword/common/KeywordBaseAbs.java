@@ -29,7 +29,7 @@ public abstract class KeywordBaseAbs {
 		int point = 0;
 		Calendar now = Calendar.getInstance();
 		int hour = now.get(Calendar.HOUR_OF_DAY);
-		//2~ 6±îÁö´Â pint ³·À½
+		//2~ 6ê¹Œì§€ëŠ” pint ë‚®ìŒ
 		if(hour >= 7 && hour <= 10){
 			point+=2.6;
 		}
@@ -118,13 +118,13 @@ public abstract class KeywordBaseAbs {
 							}
 						}*/
 					}
-					//±âÁ¸°Íº¸´Ù Á¡¼ö ÀÛÀ¸¸é, ±âÁ¸°Í¿¡ Á¡¼ö +ÇØÁÜ
+					//ê¸°ì¡´ê²ƒë³´ë‹¤ ì ìˆ˜ ìž‘ìœ¼ë©´, ê¸°ì¡´ê²ƒì— ì ìˆ˜ +í•´ì¤Œ
 					else{
 						vo.setPoint(0);
 						keyword.setPoint(keyword.getPoint() + addPoint);
 					}
 				}
-				//±âÁ¸¿¡ µî·ÏµÈ°Ô ¾øÀ¸¸é ¸Ê¿¡ ¹Ù·Î Ãß°¡
+				//ê¸°ì¡´ì— ë“±ë¡ëœê²Œ ì—†ìœ¼ë©´ ë§µì— ë°”ë¡œ ì¶”ê°€
 				else{
 					keywordMap.put(vo.getKeyword(), vo);
 				}

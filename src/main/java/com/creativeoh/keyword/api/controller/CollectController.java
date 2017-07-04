@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.creativeoh.keyword.Keyword;
@@ -49,7 +50,10 @@ public class CollectController {
 	}
 	
 	@RequestMapping("/list")
-	public List<Keyword> list(Model model) {
+	public List<Keyword> list(
+			 @RequestParam(value="num1") int num1, 
+			Model model
+			) {
 
 		List<Keyword> helloList = keywordDao.findAll();
 		//keywordDao.findB
