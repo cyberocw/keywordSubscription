@@ -36,14 +36,8 @@ public class CollectController {
 	
 	@RequestMapping("/summary")
 	public List<Keyword> summary(){
-		//protalInfoService.collectInsert();
-		//List<Keyword> helloList = keywordDao.findBySimpleDateGreaterThanEqual(today);
-		//long today = Utils.makeSimpleDateZero(new Date());
-		
 		Keyword keyword = keywordDao.findTopByTypeCodeOrderBySimpleDateDesc(Codes.KEYWORD_TYPE.SUM);
-		
-		System.out.println("keyword get =" + keyword.toString() );
-		
+		//처음것 가져옴
 		List<Keyword> todayList = keywordDao.findByTypeCodeAndSimpleDate(Codes.KEYWORD_TYPE.SUM, keyword.getSimpleDate());
 		
 		return todayList;
@@ -51,11 +45,22 @@ public class CollectController {
 	
 	@RequestMapping("/list")
 	public List<Keyword> list(
-			 @RequestParam(value="num1") int num1, 
+			@RequestParam(value="mode") String mode,
+			 @RequestParam(value="simpleDate") long simpleDate,
+			 @RequestParam(value="typeCode") int typeCode,
 			Model model
 			) {
 
-		List<Keyword> helloList = keywordDao.findAll();
+		List<Keyword> helloList = null;
+		
+		if(mode.equals("SUM")){
+			helloList = keywordDao.findBySimpleDateSum(typeCode, simpleDate);
+		}
+		else if(mode.equals("TIME")){
+			helloList = keywordDao.findByTypeCodeAndSimpleDate(typeCode, simpleDate);
+		}
+		
+		
 		//keywordDao.findB
 		return helloList;
 	}
