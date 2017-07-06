@@ -13,7 +13,7 @@ public interface KeywordDao extends JpaRepository<Keyword, Long> {
 	/*
 	 * simpleDate 부터~~~ (누적 sum) (자동에서만 쓰임)
 	 */
-	@Query("SELECT k.keyword, sum(k.point) as point, k.fromSite FROM Keyword k where k.point > 0 and k.typeCode = :typeCode and k.simpleDate >= :simpleDate Group by k.keyword, k.fromSite order by point desc")
+	@Query("SELECT k.keyword, sum(k.point) as point FROM Keyword k where k.point > 0 and k.typeCode = :typeCode and k.simpleDate >= :simpleDate Group by k.keyword order by point desc")
 	List<Keyword> findBySimpleDateGroupGreaterThanEqual(@Param("typeCode") int typeCode, @Param("simpleDate") long simpleDate);
 	
 	/*

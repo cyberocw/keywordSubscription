@@ -63,7 +63,7 @@ public class PortalInfoServiceImpl {
 			Keyword vo = new Keyword();
 			vo.setKeyword(obj[0].toString());
 			vo.setPoint(Float.valueOf(obj[1].toString()));
-			vo.setFromSite(obj[2].toString());
+			//vo.setFromSite(obj[2].toString());
 			vo.setTypeCode(Codes.KEYWORD_TYPE.SUM);
 			vo.setSimpleDate(simpleDate);
 			vo.setRegDate(now);
