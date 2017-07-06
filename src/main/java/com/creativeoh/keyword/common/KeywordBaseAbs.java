@@ -31,13 +31,13 @@ public abstract class KeywordBaseAbs {
 		int hour = now.get(Calendar.HOUR_OF_DAY);
 		//2~ 6까지는 pint 낮음
 		if(hour >= 7 && hour <= 10){
-			point+=2.6;
+			point+=18.6;
 		}
 		else if(hour >= 11 && hour <= 17){
-			point+=2.4;
+			point+=24.4;
 		}
 		else if(hour >= 18 && hour <= 2){
-			point+=2.7;
+			point+=21.7;
 		}
 		return point;
 	}
