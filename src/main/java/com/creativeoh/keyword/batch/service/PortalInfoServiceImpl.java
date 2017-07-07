@@ -18,6 +18,8 @@ import com.creativeoh.keyword.common.KeywordNaver;
 import com.creativeoh.keyword.common.KeywordZum;
 import com.creativeoh.keyword.common.util.Utils;
 
+import ch.qos.logback.classic.Logger;
+
 @Service
 public class PortalInfoServiceImpl {
 	@Autowired
@@ -45,15 +47,17 @@ public class PortalInfoServiceImpl {
 		nk = KeywordZum.getInstance();
 		nk.collect(arrKeyword, keywordMap);
 		
-		for(int i = 0 ; i < arrKeyword.size(); i++){
-			Keyword helloData = keywordDao.save(arrKeyword.get(i));
-		}
+		System.out.println("arrKeyword.get(i)="+arrKeyword.size());
+
+		List insertedList = keywordDao.save(arrKeyword);
+		System.out.println("insertedList size="+insertedList.size());
 		
 		long today = Utils.makeSimpleDateZero(new Date());
 		//List<Keyword> todayList = keywordDao.findBySimpleDateGreaterThanEqual(today);
 		
 		List todayList = keywordDao.findBySimpleDateGroupGreaterThanEqual(Codes.KEYWORD_TYPE.BASE, today);
 		
+		System.out.println("todayList="+todayList.size());
 		
 		ArrayList<Keyword> arr = new ArrayList<Keyword>();
 		Date now = new Date();
@@ -63,13 +67,16 @@ public class PortalInfoServiceImpl {
 			Keyword vo = new Keyword();
 			vo.setKeyword(obj[0].toString());
 			vo.setPoint(Float.valueOf(obj[1].toString()));
-			vo.setFromSite(obj[2].toString());
+			//vo.setFromSite(obj[2].toString());
 			vo.setTypeCode(Codes.KEYWORD_TYPE.SUM);
 			vo.setSimpleDate(simpleDate);
 			vo.setRegDate(now);
 			vo.setRank(i+1);
 			arr.add(vo);
 		}
+		
+		System.out.println("arr save length="+arr.size());
+		
 		keywordDao.save(arr);
 
 	}

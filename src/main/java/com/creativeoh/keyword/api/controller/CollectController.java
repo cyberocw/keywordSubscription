@@ -37,9 +37,12 @@ public class CollectController {
 	@RequestMapping("/summary")
 	public List<Keyword> summary(){
 		Keyword keyword = keywordDao.findTopByTypeCodeOrderBySimpleDateDesc(Codes.KEYWORD_TYPE.SUM);
-		//처음것 가져옴
-		List<Keyword> todayList = keywordDao.findByTypeCodeAndSimpleDate(Codes.KEYWORD_TYPE.SUM, keyword.getSimpleDate());
 		
+		List<Keyword> todayList = null;
+		if(keyword != null) {
+		//처음것 가져옴
+			todayList = keywordDao.findByTypeCodeAndSimpleDate(Codes.KEYWORD_TYPE.SUM, keyword.getSimpleDate());
+		}
 		return todayList;
 	}
 	
