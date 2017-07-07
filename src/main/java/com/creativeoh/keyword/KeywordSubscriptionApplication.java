@@ -9,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class KeywordSubscriptionApplication {
 
 	public static void main(String[] args) {
+		System.out.println("KeywordSubscriptionApplication void main start");
 		SpringApplication.run(KeywordSubscriptionApplication.class, args);
 	}
 }
