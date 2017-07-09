@@ -32,7 +32,7 @@ public class PortalInfoServiceImpl {
 	private String siteName;
 	private int sitePoint;
 	
-	@Scheduled(cron = "0 0/30 * * * *")
+	@Scheduled(cron = "1 0/30 * * * *")
 	public void collectInsert() {
 		System.out.println("collect insert start");
 		KeywordBaseAbs nk = KeywordNaver.getInstance();
@@ -57,8 +57,15 @@ public class PortalInfoServiceImpl {
 		
 		List todayList = keywordDao.findBySimpleDateGroupGreaterThanEqual(Codes.KEYWORD_TYPE.BASE, today);
 		
-		System.out.println("todayList="+todayList.size());
-		
+		keywordDao.save(makeSumArrayToVO(todayList));
+	}
+	
+	public ArrayList<Keyword> getSimpleDateSum(long simpleDate){
+			List list = keywordDao.findBySimpleDateSum(simpleDate);
+			return makeSumArrayToVO(list);
+	}
+	
+	public ArrayList makeSumArrayToVO(List todayList) {
 		ArrayList<Keyword> arr = new ArrayList<Keyword>();
 		Date now = new Date();
 		long simpleDate = Utils.makeSimpleDate(now);
@@ -74,11 +81,7 @@ public class PortalInfoServiceImpl {
 			vo.setRank(i+1);
 			arr.add(vo);
 		}
-		
-		System.out.println("arr save length="+arr.size());
-		
-		keywordDao.save(arr);
-
+		return arr;
 	}
 }
  

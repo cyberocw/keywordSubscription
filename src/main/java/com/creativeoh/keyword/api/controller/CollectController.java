@@ -50,14 +50,14 @@ public class CollectController {
 	public List<Keyword> list(
 			@RequestParam(value="mode") String mode,
 			 @RequestParam(value="simpleDate") long simpleDate,
-			 @RequestParam(value="typeCode") int typeCode,
+			 @RequestParam(value="typeCode", required=false) int typeCode,
 			Model model
 			) {
 
 		List<Keyword> helloList = null;
 		
 		if(mode.equals("SUM")){
-			helloList = keywordDao.findBySimpleDateSum(typeCode, simpleDate);
+			helloList = protalInfoService.getSimpleDateSum(simpleDate);
 		}
 		else if(mode.equals("TIME")){
 			helloList = keywordDao.findByTypeCodeAndSimpleDate(typeCode, simpleDate);

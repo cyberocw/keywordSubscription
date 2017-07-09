@@ -66,12 +66,11 @@ public abstract class KeywordBaseAbs {
 			
 			if(url.indexOf("http") > -1){
 				 doc = Jsoup.connect(url) .userAgent("Mozilla")
-						 .cookie("auth", "token") .timeout(3000) .get();
+						 .cookie("auth", "token") .timeout(15000) .get();
 			}
 			else{
 				File f = new ClassPathResource(url).getFile();
 	
-				System.out.println("exist=" + f.exists());
 				doc = Jsoup.parse(f, "UTF-8");
 			}
 			Elements lis = doc.select(selectorParent);
