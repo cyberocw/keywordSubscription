@@ -1,5 +1,7 @@
 package com.creativeoh.keyword.batch.service;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -60,9 +62,10 @@ public class PortalInfoServiceImpl {
 		keywordDao.save(makeSumArrayToVO(todayList));
 	}
 	
-	public ArrayList<Keyword> getSimpleDateSum(long simpleDate){
-			List list = keywordDao.findBySimpleDateSum(simpleDate);
-			return makeSumArrayToVO(list);
+	public List getSimpleDateSum(long simpleDate){
+		List<Keyword> list = keywordDao.findBySimpleDateSum(simpleDate);
+		return list;
+			//return (ArrayList<Keyword>) (list);
 	}
 	
 	public ArrayList makeSumArrayToVO(List todayList) {
@@ -74,7 +77,12 @@ public class PortalInfoServiceImpl {
 			Keyword vo = new Keyword();
 			vo.setKeyword(obj[0].toString());
 			vo.setPoint(Float.valueOf(obj[1].toString()));
-			//vo.setFromSite(obj[2].toString());
+			if(obj.length > 2){
+				vo.setRankNAVER((obj[2].toString()));
+				vo.setRankDAUM((obj[3].toString()));
+				vo.setRankZUM((obj[4].toString()));
+			}
+			
 			vo.setTypeCode(Codes.KEYWORD_TYPE.SUM);
 			vo.setSimpleDate(simpleDate);
 			vo.setRegDate(now);
