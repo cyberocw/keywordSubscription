@@ -25,8 +25,8 @@ public interface KeywordDao extends JpaRepository<Keyword, Long> {
 			+ "case when b.id is not null then b.id else case when c.id is not null then c.id else case when d.id is not null then d.id else -1 end end end as id "
 			+ ", '' as from_site, '-1' as rank, now() as reg_date, :simpleDate as simple_date, 2 as type_code,"
 			+ "a.keyword, a.point , b.rank as rankNAVER, c.rank as rankDAUM, d.rank as rankZUM"
-+ " from(SELECT k.keyword, sum(k.point) as point FROM Keyword k where k.point > 0 and k.type_code = 1 and k.simple_date = :simpleDate Group by k.keyword ) a"
-+ " left join Keyword b on a.keyword = b.keyword and b.from_Site = 'NAVER' and b.type_code = 1 and b.simple_date = :simpleDate"
++ " from(SELECT k.keyword, sum(k.point) as point FROM keyword k where k.point > 0 and k.type_code = 1 and k.simple_date = :simpleDate Group by k.keyword ) a"
++ " left join keyword b on a.keyword = b.keyword and b.from_Site = 'NAVER' and b.type_code = 1 and b.simple_date = :simpleDate"
 + " left join keyword c on a.keyword = c.keyword and c.from_site = 'DAUM' and c.type_code = 1 and c.simple_date = :simpleDate"
 + " left join keyword d on a.keyword = d.keyword and d.from_site = 'ZUM' and d.type_code = 1 and d.simple_date = :simpleDate"
 + " order by a.point desc", nativeQuery=true)

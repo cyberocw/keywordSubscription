@@ -1,7 +1,5 @@
 package com.creativeoh.keyword.batch.service;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
