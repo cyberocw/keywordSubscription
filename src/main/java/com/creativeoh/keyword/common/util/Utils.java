@@ -15,7 +15,7 @@ public class Utils {
 	public static long makeSimpleDateZero(Date date){
 		return Long.valueOf(sfZero.format(date));
 	}
-	public static long makeSimpleDateLog(Date date){
-		return Long.valueOf(sfLog.format(date));
+	public static String makeSimpleDateLog(Date date){
+		return sfLog.format(date);
 	}
 }
