@@ -34,7 +34,7 @@ public class PortalInfoServiceImpl {
 	
 	@Scheduled(cron = "1 0/30 * * * *")
 	public void collectInsert() {
-		System.out.println("collect insert start");
+		System.out.println("collect insert start" + Utils.makeSimpleDateLog(new Date()));
 		KeywordBaseAbs nk = KeywordNaver.getInstance();
 		ArrayList<Keyword> arrKeyword = new ArrayList();
 		HashMap<String, Keyword> keywordMap = new HashMap();
