@@ -89,5 +89,8 @@ public class PortalInfoServiceImpl {
 		}
 		return arr;
 	}
+	public void getBlogHtmlSummary(List<Keyword> list){
+		
+	}
 }
  

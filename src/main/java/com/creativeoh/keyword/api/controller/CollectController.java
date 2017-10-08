@@ -36,6 +36,7 @@ public class CollectController {
 	
 	@RequestMapping("/summary")
 	public List<Keyword> summary(){
+		//최신 날짜 구해온 다음 가져오기
 		Keyword keyword = keywordDao.findTopByTypeCodeOrderBySimpleDateDesc(Codes.KEYWORD_TYPE.SUM);
 		
 		List<Keyword> todayList = null;
@@ -63,8 +64,6 @@ public class CollectController {
 			helloList = keywordDao.findByTypeCodeAndSimpleDate(typeCode, simpleDate);
 		}
 		
-		
-		//keywordDao.findB
 		return helloList;
 	}
 	
@@ -76,4 +75,6 @@ public class CollectController {
 		Keyword helloData = keywordDao.save(hello);
 		return helloData;
 	}
+	
+	
 }

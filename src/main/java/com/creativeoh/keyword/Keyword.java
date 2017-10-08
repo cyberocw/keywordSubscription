@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +30,8 @@ public class Keyword implements Serializable{
 	@Getter @Setter private Date regDate;
 	@Getter @Setter private long simpleDate;
 	@Getter @Setter private int typeCode;
+	@Transient
+	@Getter @Setter private String link;
 	@Override
 	public String toString() {
 		return "Keyword [id=" + id + ", keyword=" + keyword + ", rank=" + rank + ", rankNAVER=" + rankNAVER
