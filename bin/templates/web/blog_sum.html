@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<table border='1' cellpadding='5' cellspacing='0' style='text-align:center;font-size:11px;'>
+	
+	<thead>
+		<tr>
+			<th colspan="5">
+			<div style='text-align:center'><h2>인기 검색어 누적 순위</h2></div>
+			<div style='font-size:12px;text-align:right'>측정 시간 : <span th:text="${#dates.format(simpleDate, 'yyyy-MM-dd HH:mm')}"></span></div>
+			</th>
+		</tr>
+		<tr>
+		<th rowspan='2'>종합 순위</th>
+		<th rowspan='2'>키워드</th>
+		<th colspan='3'>현재 사이트 순위</th>
+		</tr>
+		<tr>
+		<th>네이버 (Naver)</th>
+		<th>다음 (Daum)</th>
+		<th>줌 (Zoom)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="sb, rowStat : ${resultList}">
+			<td th:text="${rowStat.count}">1</td>
+			<td><a th:href="${sb.link}" target="_blank" th:text="${sb.keyword}">�꽦�떊�젣</a></td>
+			<td><a th:href="${'https://search.naver.com/search.naver?query=' + sb.keyword}" target="_blank"  th:text="${sb.rankNAVER}">2</a></td>
+			<td><a th:href="${'https://search.daum.net/search?q=' + sb.keyword}" target="_blank"  th:text="${sb.rankDAUM}">2</a></td>
+			<td><a th:href="${'http://search.zum.com/search.zum?query=' + sb.keyword}" target="_blank"  th:text="${sb.rankZUM}">2</a></td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>

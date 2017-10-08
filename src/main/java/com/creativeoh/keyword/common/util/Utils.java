@@ -2,6 +2,9 @@ package com.creativeoh.keyword.common.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import com.creativeoh.keyword.Keyword;
 
 public class Utils {
 	private static SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmm");
@@ -18,4 +21,5 @@ public class Utils {
 	public static String makeSimpleDateLog(Date date){
 		return sfLog.format(date);
 	}
+
 }
