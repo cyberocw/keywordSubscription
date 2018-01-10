@@ -37,7 +37,7 @@ public interface KeywordDao extends JpaRepository<Keyword, Long> {
 	 * 지금 사용 : 해당 시점에 만들어진 누적 데이터 가져오기 type 2 and simpleDate 
 	 */
 	
-	List<Keyword> findByTypeCodeAndSimpleDate(int typeCode, long simpleDate);
+	List<Keyword> findByTypeCodeAndSimpleDateOrderByPointDesc(int typeCode, long simpleDate);
 	
 	
 	//가장 최신것 가져오기

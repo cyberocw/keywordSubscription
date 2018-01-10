@@ -42,7 +42,7 @@ public class CollectController {
 		List<Keyword> todayList = null;
 		if(keyword != null) {
 		//처음것 가져옴
-			todayList = keywordDao.findByTypeCodeAndSimpleDate(Codes.KEYWORD_TYPE.SUM, keyword.getSimpleDate());
+			todayList = keywordDao.findByTypeCodeAndSimpleDateOrderByPointDesc(Codes.KEYWORD_TYPE.SUM, keyword.getSimpleDate());
 		}
 		return todayList;
 	}
@@ -61,7 +61,7 @@ public class CollectController {
 			helloList = protalInfoService.getSimpleDateSum(simpleDate);
 		}
 		else if(mode.equals("TIME")){
-			helloList = keywordDao.findByTypeCodeAndSimpleDate(typeCode, simpleDate);
+			helloList = keywordDao.findByTypeCodeAndSimpleDateOrderByPointDesc(typeCode, simpleDate);
 		}
 		
 		return helloList;

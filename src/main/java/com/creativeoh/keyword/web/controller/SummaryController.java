@@ -39,7 +39,7 @@ public class SummaryController {
 			helloList = protalInfoService.getSimpleDateSum(simpleDate);
 		}
 		else if(mode.equals("TIME")){
-			helloList = keywordDao.findByTypeCodeAndSimpleDate(typeCode, simpleDate);
+			helloList = keywordDao.findByTypeCodeAndSimpleDateOrderByPointDesc(typeCode, simpleDate);
 		}
 		String url, keyword;
 		for(int i = 0; i < helloList.size(); i++){
